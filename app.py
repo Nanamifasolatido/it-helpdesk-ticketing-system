@@ -19,7 +19,13 @@ app.secret_key = "it415-helpdesk-secret"
 
 
 # =========================
-# Dashboard
+# =========================
+# New Ticket Page
+# =========================
+
+@app.route("/tickets/new")
+def new_ticket():
+    return render_template("new_ticket.html")
 # =========================
 
 @app.route("/")

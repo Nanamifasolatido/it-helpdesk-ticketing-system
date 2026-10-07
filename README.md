@@ -1,23 +1,39 @@
-# IT Help Desk
+# IT Help Desk Ticketing System
 
-A starter Flask application for an IT help desk.
+A campus IT Help Desk Ticketing System built to centralize the submission, tracking, assignment, and resolution of IT support requests.
 
-## Setup
+The system allows staff and students to submit IT concerns while IT technicians can manage tickets, update their status, assign responsibilities, and add notes or updates.
 
-```powershell
-py -m venv .venv
-.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-python app.py
-```
+## Features
 
-The application is available at <http://127.0.0.1:5000/>. The SQLite database is created at `data/helpdesk.db` when the application starts.
+- Submit new IT support tickets
+- Automatically generate unique ticket numbers (TKT-XXXX)
+- View and track submitted tickets
+- Assign tickets to IT technicians
+- Pre-populated IT technicians
+- Update ticket status through a defined workflow
+- Add notes and updates to tickets
+- Search and filter tickets
+- Sort tickets by priority or date
+- View ticket details and resolution information
+- Dashboard with ticket summary counts
+- Track unresolved tickets without an assigned technician
+- Calculate resolution time when a ticket is resolved
 
-## Project structure
+## Ticket Status Workflow
 
-- `app.py`: Flask application entry point and page routes
-- `database.py`: SQLite connection and initialization helpers
-- `models.py`: Help desk data model definitions
-- `services.py`: Ticket workflow and business logic
-- `templates/`: HTML pages
-- `static/`: CSS and JavaScript assets
+Tickets follow a defined lifecycle:
+
+**Open → In Progress → Resolved → Closed**
+
+- A ticket must have an assigned technician before it can move to **In Progress**.
+- A **Resolved** ticket can be returned to **In Progress** if the issue is not fixed.
+- Invalid status transitions are blocked by the system.
+
+## Technologies
+
+- Python
+- Flask
+- HTML
+- CSS
+- JavaScript
