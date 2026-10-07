@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>IT Help Desk | Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- =========================
+             SIDEBAR
+        ========================== -->
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+                <div class="logo">
+                    IT<span>Help</span>
+                </div>
+
+                <button class="collapse-btn" type="button">
+                    ‹
+                </button>
+            </div>
+
+            <nav class="sidebar-navigation">
+
+                <p class="nav-section-title">General</p>
+
+                <a href="{{ url_for('dashboard') }}" class="nav-item active">
+                    <span class="nav-icon">▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="{{ url_for('ticket_list') }}" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    <span>Tickets</span>
+                </a>
+
+                <a href="{{ url_for('ticket_list') }}" class="nav-item">
+                    <span class="nav-icon">＋</span>
+                    <span>New Ticket</span>
+                </a>
+
+                <p class="nav-section-title">System</p>
+
+                <a href="{{ url_for('ticket_list') }}" class="nav-item">
+                    <span class="nav-icon">✓</span>
+                    <span>All Requests</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Settings</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">↪</span>
+                    <span>Log out</span>
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =========================
+             MAIN CONTENT
+        ========================== -->
+        <main class="main-content">
+
+            <!-- Top Header -->
+            <header class="top-header">
+
+                <div>
+                    <h1>Welcome to IT Help Desk!</h1>
+                    <p class="page-subtitle">
+                        Manage, track, and resolve campus IT support requests.
+                    </p>
+                </div>
+
+                <div class="header-actions">
+
+                    <button class="notification-btn" type="button">
+                        ♧
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="profile-avatar">
+                        IT
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================
+                 OVERVIEW CARD
+            ========================== -->
+            <section class="welcome-card">
+
+                <div class="welcome-content">
+
+                    <p class="welcome-label">
+                        IT SUPPORT OVERVIEW
+                    </p>
+
+                    <h2>
+                        Keep track of every request in one place.
+                    </h2>
+
+                    <p>
+                        Monitor ticket progress, assignments, priorities,
+                        and unresolved requests from your dashboard.
+                    </p>
+
+                </div>
+
+                <a href="{{ url_for('ticket_list') }}" class="primary-button">
+                    View Tickets
+                    <span>→</span>
+                </a>
+
+            </section>
+
+
+            <!-- =========================
+                 TICKET SUMMARY
+            ========================== -->
+            <section class="dashboard-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Ticket Overview</h2>
+                        <p>Current status of all IT support requests.</p>
+                    </div>
+
+                    <a href="{{ url_for('ticket_list') }}" class="see-all-button">
+                        See all
+                        <span>›</span>
+                    </a>
+                </div>
+
+
+                <div class="stats-grid">
+
+                    <!-- Total -->
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+                            <span class="stat-label">Total Tickets</span>
+                            <span class="stat-icon">▦</span>
+                        </div>
+
+                        <div class="stat-number">
+                            {{ stats.total }}
+                        </div>
+
+                        <p class="stat-description">
+                            All submitted requests
+                        </p>
+
+                    </div>
+
+
+                    <!-- Open -->
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+                            <span class="stat-label">Open</span>
+                            <span class="stat-icon">○</span>
+                        </div>
+
+                        <div class="stat-number">
+                            {{ stats.open }}
+                        </div>
+
+                        <p class="stat-description">
+                            Waiting to be handled
+                        </p>
+
+                    </div>
+
+
+                    <!-- In Progress -->
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+                            <span class="stat-label">In Progress</span>
+                            <span class="stat-icon">◷</span>
+                        </div>
+
+                        <div class="stat-number">
+                            {{ stats.in_progress }}
+                        </div>
+
+                        <p class="stat-description">
+                            Currently being worked on
+                        </p>
+
+                    </div>
+
+
+                    <!-- Resolved -->
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+                            <span class="stat-label">Resolved</span>
+                            <span class="stat-icon">✓</span>
+                        </div>
+
+                        <div class="stat-number">
+                            {{ stats.resolved }}
+                        </div>
+
+                        <p class="stat-description">
+                            Issues successfully resolved
+                        </p>
+
+                    </div>
+
+
+                    <!-- Closed -->
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+                            <span class="stat-label">Closed</span>
+                            <span class="stat-icon">▣</span>
+                        </div>
+
+                        <div class="stat-number">
+                            {{ stats.closed }}
+                        </div>
+
+                        <p class="stat-description">
+                            Completed requests
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 ATTENTION CARD
+            ========================== -->
+            <section class="dashboard-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Needs Attention</h2>
+                        <p>Requests that may require immediate assignment.</p>
+                    </div>
+                </div>
+
+
+                <div class="attention-card">
+
+                    <div class="attention-icon">
+                        !
+                    </div>
+
+                    <div class="attention-content">
+                        <h3>
+                            {{ stats.unassigned_open }}
+                            open ticket{% if stats.unassigned_open != 1 %}s{% endif %}
+                            without a technician
+                        </h3>
+
+                        <p>
+                            Assign a technician to begin working on these requests.
+                        </p>
+                    </div>
+
+                    <a href="{{ url_for('ticket_list', status='Open') }}"
+                       class="secondary-button">
+                        Review
+                        <span>→</span>
+                    </a>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
